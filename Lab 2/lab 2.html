@@ -1,0 +1,119 @@
+<!DOCTYPE html> 
+<html>
+<head><b><marquee> CMSC 126 Lab 2 </marquee></b>
+<meta charset = "UTF-8">
+<meta name = "viewport" content = "width=device-width, initial-scale = 1">
+<title> CMSC 126 Lab 2 </title>
+<style>
+input[type = 'submit'], button, [aria-label]{
+	cursor: pointer;
+	}
+	
+#spoiler {
+
+}
+</style>
+</head>
+<body>
+	
+	<h2> Please Enter your name </h2> 
+	<h3> Coach: </h3>
+	<form action = "javascript:void(0);" method = "get">
+		First Name: <input type = "text" name = "fname"><br>
+		Last Name: <input type = "text" name = "lname"><br>
+	<input type = "submit" value = "Proceed">
+	</form>
+	
+<h1><center><b> Please enter the names of the players you want to be part of your team </b></center></h1>
+
+	<!-- <form action = "javascript:void(0); "method = "post" onsubmit = app.Add()">
+		<input type = "text" id = "playerName" placeholder = "Player Name"> 
+		<input type = "submit" value = "Add Player">
+	</form> 
+	<form onsubmit = event.preventDefault();addPlayerName();" autocomplete = "off">
+	-->
+	
+	<!-- <div id = "spoiler" role = "aria - hidden">
+	
+	<form action = "javascript:void(0);" method = "post" id = "Edit">
+		<input type = "text" id = "Edit-Player"> 
+		<input type = "submit"
+		value = "Edit Player" /> 
+		<a onclick = "Done()" aria-label = "Done"> </a> 
+	</form>
+	<div> 
+	 -->
+	 
+	 
+	<form onsubmit = "event.preventDefault();addPlayerName(); "autocomplete = "off">
+	<label> Team Players </label>
+	<br>
+	<input type = "text" name = "playerName" id = "playerName">
+	<input type = "submit" value = "Add">
+	</form>
+	 
+	<br>
+	
+	<table class = "list" id = "playerList">
+		<tr> 
+			<th><center> List of Players for the team </center></th>
+		</tr>
+		<tbody>
+		</tbody>
+	</table>	
+	
+	
+	<script> 
+	
+		var selectedPlayerName = null
+		
+		function addPlayerName() {
+		var newPlayerName = readForm();
+		document.getElementById("playerName").value = " ";
+		if(selectedPlayerName == null) {
+			addNewPlayerName(newPlayerName);
+		} else {
+			editPlayerList(newPlayerName);
+		}
+			selectedPlayer = null;
+	}
+
+		function readForm() {
+			var name1 = document.getElementById("playerName").value;
+			return name1;
+		}
+
+		function editPlayerName(td){
+		selectedPlayerName = td.parentElement.parentElement;
+		document.getElementById("playerName").value = selectedPlayerName.cells[0].innerHTML;		
+		}
+
+		function editplayerList(name1) {
+			selectedPlayerName.cells[0].innerHTML = name1;
+		}
+			
+		
+		function deletePlayerName (td) {
+			row = td.parentElement.parentElement;
+			document.getElementById("playerList").deletePlayerRow(row.rowIndex);
+			document.getElementById("playerName").value = "";
+			selectedPlayerName = null;
+		
+		}
+
+		function addNewPlayerName(name) {
+			var table = document.getElementById("playerList").getElementsByTagName('tbody')[0];
+			var newPlayerRow = table.insertRow(table.length);
+			var space = "check";
+			cell = newPlayerRow.insertCell(0);
+			cell.innerHTML = name1;
+			cell1 = newPlayerRow.insertCell(1);
+			cell1 = innerHTML = '<a onclick = "editPlayerName(this)"> Edit Player Name </a>
+			cell2 = newPlayerRow.insertCell(2);
+			cell2.innerHTML = '< a onclick = "deletePlayerName(this)"> Delete Player </a>
+		}
+
+	</script>
+	
+</body>
+</html> 
